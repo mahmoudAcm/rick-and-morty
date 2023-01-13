@@ -1,7 +1,7 @@
 //components
 import { Section } from "@components/styles";
 import Filter from "./filter";
-import { Grid } from "@components/styles";
+import { Grid, StyledCard } from "@components/styles";
 import Card from "./card";
 import LoadMoreButton from "../buttons/loadMore";
 

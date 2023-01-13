@@ -6,10 +6,13 @@ export default function Card() {
   return (
     <StyledCard>
       <Typography variant="h6" align="center">
-        Earth (C-137)
+        Pilot
       </Typography>
       <Typography variant="body2" align="center" color="rgba(0, 0, 0, 0.6)">
-        Planet
+        December 2, 2013
+      </Typography>
+      <Typography fontWeight={700} align="center" className="ep-code" color="rgba(0, 0, 0, 0.6)">
+        SE01E01
       </Typography>
     </StyledCard>
   );
