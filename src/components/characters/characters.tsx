@@ -1,7 +1,7 @@
 //components
 import { Section } from "@components/styles";
 import Filter from "./filter";
-import CharacterCard from "./characterCard";
+import Card from "./card";
 import LoadMoreButton from "@components/buttons/loadMore";
 import { Grid } from "@components/styles";
 
@@ -13,7 +13,7 @@ export default function Characters() {
         <Filter />
         <Grid>
           {new Array(10).fill(0).map((_, idx) => (
-            <CharacterCard key={idx} />
+            <Card key={idx} />
           ))}
         </Grid>
         <LoadMoreButton />
