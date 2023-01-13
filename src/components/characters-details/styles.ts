@@ -25,13 +25,13 @@ export const Details = styled(Box)(() => ({
 export const List = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
-  gap: 36,
   "& .list-name": {
     fontSize: 20,
     fontWeight: 500,
     lineHeight: "24px",
     letterSpacing: "0.15px",
     color: "#8E8E93",
+    marginBottom: 36,
   },
 }));
 
