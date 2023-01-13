@@ -5,7 +5,7 @@ import { StyledToolbar, StyledNav } from "./styles";
 
 export default function Header() {
   return (
-    <AppBar color="transparent">
+    <AppBar color="transparent" position="relative">
       <StyledToolbar>
         <img src="./logo.svg" alt="logo" />
         <StyledNav>
