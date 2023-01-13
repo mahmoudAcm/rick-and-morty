@@ -3,6 +3,7 @@ import Header from "@components/header";
 import Characters from "@components/characters";
 import Locations from "@components/locations";
 import Episodes from "@components/episodes";
+import CharactersDetails from "@components/characters-details";
 
 export default function App() {
   return (
@@ -10,7 +11,8 @@ export default function App() {
       <Header />
       {/* <Characters /> */}
       {/* <Locations /> */}
-      <Episodes />
+      {/* <Episodes /> */}
+      <CharactersDetails />
     </>
   );
 }
