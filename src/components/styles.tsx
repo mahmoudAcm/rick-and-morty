@@ -1,5 +1,9 @@
-import Box from "@mui/material/Box";
+import Box, { BoxProps } from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
+
+//icons
+import FilterIcon from "@icons/Filter";
 
 export const Section = styled(Box)(({ theme }) => ({
   width: "100%",
@@ -25,12 +29,36 @@ export const StyledFilter = styled(Box)(({ theme }) => ({
   },
   "& .MuiTextField-root": { m: 1, width: 240 },
   [theme.breakpoints.down("lg")]: {
+    flexDirection: "column",
     "& .search": {
       width: "312px !important",
     },
     "& .MuiTextField-root:not(.search)": {
       display: "none",
     },
+  },
+}));
+
+export const StyledMobileFilter = styled(function (props: BoxProps) {
+  return (
+    <Box {...props}>
+      <FilterIcon />
+      <Typography sx={{ width: 249, fontWeight: 500 }} align="center" color="#2196F3">
+        ADVANCED FILTERS
+      </Typography>
+    </Box>
+  );
+})(({ theme }) => ({
+  width: 312,
+  height: 65,
+  display: "none",
+  alignItems: "center",
+  background: "#E3F2FD",
+  boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24)",
+  borderRadius: 4,
+  padding: 21,
+  [theme.breakpoints.down("lg")]: {
+    display: "flex",
   },
 }));
 
@@ -94,7 +122,7 @@ export const StyledLocationEpisodeHeaders = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("sm")]: {
       margin: 0,
       gap: 0,
-      justifyContent: "space-between"
+      justifyContent: "space-between",
     },
   },
   "& .col-key": {

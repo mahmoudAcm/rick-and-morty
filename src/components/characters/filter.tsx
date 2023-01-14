@@ -1,5 +1,5 @@
 //components
-import { StyledFilter } from "@components/styles";
+import { StyledFilter, StyledMobileFilter } from "@components/styles";
 import TextField from "@mui/material/TextField";
 
 export default function Filter() {
@@ -9,6 +9,7 @@ export default function Filter() {
       <TextField select label="Species" />
       <TextField select label="Gender" />
       <TextField select label="Status" />
+      <StyledMobileFilter />
     </StyledFilter>
   );
 }

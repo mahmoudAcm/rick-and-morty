@@ -6,9 +6,17 @@ export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingRight: "210px !important",
   minHeight: "60px !important",
   justifyContent: "space-between",
+  "& .MenuIcon": {
+    display: "none",
+  },
   [theme.breakpoints.down("lg")]: {
     paddingLeft: "24px !important",
     paddingRight: "24px !important",
+  },
+  [theme.breakpoints.down("md")]: {
+    "& .MenuIcon": {
+      display: "block",
+    },
   },
   [theme.breakpoints.down(321)]: {
     paddingLeft: "10px !important",
@@ -29,7 +37,6 @@ export const StyledNav = styled("nav")(({ theme }) => ({
     lineHeight: "21px",
     fontFamily: "'Karla', sans-serif",
   },
-
   [theme.breakpoints.down("md")]: {
     "& ul": {
       display: "none",

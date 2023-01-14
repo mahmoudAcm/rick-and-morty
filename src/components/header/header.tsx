@@ -3,6 +3,9 @@ import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
 import { StyledToolbar, StyledNav } from "./styles";
 
+//icons
+import MenuIcon from "@icons/Menu";
+
 export default function Header() {
   return (
     <AppBar color="transparent" position="relative">
@@ -21,6 +24,9 @@ export default function Header() {
             </Typography>
           </ul>
         </StyledNav>
+        <span className="MenuIcon">
+          <MenuIcon />
+        </span>
       </StyledToolbar>
     </AppBar>
   );

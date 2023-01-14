@@ -11,10 +11,10 @@ export default function App() {
   return (
     <>
       <Header />
-      {/* <Characters />
+      <Characters />
       <Locations />
-      <Episodes /> */}
-      {/* <CharactersDetails /> */}
+      <Episodes />
+      <CharactersDetails />
       <LocationDetails
         origin="Earth (Replacement Dimension)"
         type="Planet"
