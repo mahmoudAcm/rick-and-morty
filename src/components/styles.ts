@@ -50,7 +50,7 @@ export const Grid = styled(Box)(({ theme }) => ({
 
 export const StyledCard = styled(Box)(({ theme }) => ({
   width: 240,
-  height: 128,
+  minHeight: 128,
   padding: "38px 16px",
   backgroundColor: "white",
   boxShadow:
