@@ -8,7 +8,7 @@ export default function Episodes() {
   return (
     <Section>
       <div className="container">
-        <img src="./episodes.svg" alt="logo" />
+        <img src={import.meta.env.BASE_URL + "episodes.svg"} alt="logo" />
         <StyledFilter sx={{ marginTop: "16px" }}>
           <TextField
             label="Filter by name or episode (ex. S01 or S01E02)"

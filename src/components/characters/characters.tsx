@@ -9,7 +9,7 @@ export default function Characters() {
   return (
     <StyledCharacters>
       <div className="container">
-        <img src="styled-logo.svg" alt="logo" />
+        <img src={import.meta.env.BASE_URL + "styled-logo.svg"} alt="logo" />
         <Filter />
         <Grid>
           {new Array(10).fill(0).map((_, idx) => (
