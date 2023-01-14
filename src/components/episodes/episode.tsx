@@ -3,15 +3,20 @@ import { StyledCard } from "@components/styles";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
-export default function Card() {
+//types
+import { Episode as EpisodeType } from "@__types__";
+
+interface EpisodeProps extends EpisodeType {}
+
+export default function Episode(props: EpisodeProps) {
   return (
-    <Link to="/episodes/1287287">
+    <Link to={import.meta.env.BASE_URL + "episodes/" + props.id}>
       <StyledCard>
         <Typography variant="h6" align="center">
-          Pilot
+          {props.name}
         </Typography>
         <Typography variant="body2" align="center" color="rgba(0, 0, 0, 0.6)">
-          December 2, 2013
+          {props.air_date}
         </Typography>
         <Typography
           fontWeight={700}
@@ -19,7 +24,7 @@ export default function Card() {
           className="ep-code"
           color="rgba(0, 0, 0, 0.6)"
         >
-          SE01E01
+          {props.episode}
         </Typography>
       </StyledCard>
     </Link>

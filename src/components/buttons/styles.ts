@@ -9,4 +9,11 @@ export const StyledLoadMoreButton = styled("button")(() => ({
   borderRadius: 4,
   backgroundColor: "#F2F9FE",
   color: "#2196F3",
+  cursor: "pointer",
+  display: "flex",
+  gap: 10,
+  transition: "0.3s box-shadow",
+  "&:active": {
+    boxShadow: "none",
+  },
 }));

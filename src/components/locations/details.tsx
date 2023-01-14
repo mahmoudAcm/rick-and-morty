@@ -1,30 +1,35 @@
+import { useParams } from "react-router-dom";
+
 //layouts
 import LocationEpisodeLayouts from "@components/location-episode-layouts";
 
 //components
-import CharacterCard from "@components/characters/card";
+import CharacterCard from "@components/characters/character";
+import Loader from "@components/loader";
+
+//utils
+import { useLocationDetails } from "./utils";
 
 //types
-import { LocationEpisodeLayoutsProps } from "@components/location-episode-layouts";
+import { Character } from "@__types__";
 
-interface DetailsProps
-  extends Omit<
-    LocationEpisodeLayoutsProps["location"],
-    "title" | "subtitle" | "children"
-  > {
-  origin: string;
-}
+export default function Details() {
+  const { id } = useParams();
+  const { data, loading } = useLocationDetails(id);
 
-export default function Details(props: DetailsProps) {
-  const { origin, ...location } = props;
+  if (loading || !data || !data.location) return <Loader />;
+
   return (
     <LocationEpisodeLayouts
-      title={origin}
-      location={location}
+      title={data.location.name}
+      location={{
+        type: data.location.type,
+        dimension: data.location.dimension,
+      }}
       subtitle="Residents"
     >
-      {new Array(10).fill(0).map((_, idx) => (
-        <CharacterCard key={idx} />
+      {(data.location.residents ?? []).map((character: Character) => (
+        <CharacterCard key={character.id} {...character} />
       ))}
     </LocationEpisodeLayouts>
   );

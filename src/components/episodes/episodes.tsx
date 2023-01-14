@@ -1,10 +1,33 @@
+import { useQuery } from "@apollo/client";
+
 //components
 import { Section, StyledFilter, Grid } from "@components/styles";
 import TextField from "@mui/material/TextField";
-import Card from "./card";
+import Card from "./episode";
 import LoadMoreButton from "../buttons/loadMore";
 
+//utils
+import { updateQuery } from "../../client";
+
+//types
+import { Episode } from "@__types__";
+
+//queries
+import { createEpisodesQuery } from "./queries";
+
+const EPISODES_QUERY = createEpisodesQuery("1");
+
 export default function Episodes() {
+  const { data, loading, error, fetchMore } = useQuery(EPISODES_QUERY);
+
+  const loadMore = () => {
+    if (!data) return;
+    fetchMore({
+      query: createEpisodesQuery(data.episodes.info.next),
+      updateQuery: updateQuery("episodes"),
+    });
+  };
+
   return (
     <Section>
       <div className="container">
@@ -16,12 +39,22 @@ export default function Episodes() {
             className="search"
           />
         </StyledFilter>
-        <Grid>
-          {new Array(10).fill(0).map((_, idx) => (
-            <Card key={idx} />
-          ))}
-        </Grid>
-        <LoadMoreButton />
+        {!loading || data ? (
+          <>
+            <Grid>
+              {(data.episodes.results ?? []).map((episode: Episode) => (
+                <Card key={episode.id} {...episode} />
+              ))}
+            </Grid>
+            {data.episodes.info.next ? (
+              <LoadMoreButton onClick={loadMore} loading={loading} />
+            ) : (
+              <></>
+            )}
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </Section>
   );

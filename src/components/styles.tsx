@@ -43,7 +43,11 @@ export const StyledMobileFilter = styled(function (props: BoxProps) {
   return (
     <Box {...props}>
       <FilterIcon />
-      <Typography sx={{ width: 249, fontWeight: 500 }} align="center" color="#2196F3">
+      <Typography
+        sx={{ width: 249, fontWeight: 500 }}
+        align="center"
+        color="#2196F3"
+      >
         ADVANCED FILTERS
       </Typography>
     </Box>
@@ -87,6 +91,10 @@ export const StyledCard = styled(Box)(({ theme }) => ({
   "& h6": {
     lineHeight: "30px",
     letterSpacing: "0.15px",
+    width: "100%",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
   },
   "& .MuiTypography-body2": {
     lineHeight: "21px",

@@ -19,6 +19,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@icons/*": ["icons/*"],
+      "@__types__": ["types.ts"]
     }
   },
   "include": ["src"],

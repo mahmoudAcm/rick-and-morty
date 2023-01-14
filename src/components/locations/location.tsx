@@ -3,15 +3,20 @@ import { StyledCard } from "@components/styles";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
-export default function Card() {
+//types
+import { Location as LocationType } from "@__types__";
+
+interface LocationProps extends LocationType {}
+
+export default function Location(props: LocationProps) {
   return (
-    <Link to="/locations/81738">
+    <Link to={import.meta.env.BASE_URL + "locations/" + props.id}>
       <StyledCard>
         <Typography variant="h6" align="center">
-          Earth (C-137)
+          {props.name ?? "Earth (C-137)"}
         </Typography>
         <Typography variant="body2" align="center" color="rgba(0, 0, 0, 0.6)">
-          Planet
+          {props.dimension ?? "Planet"}
         </Typography>
       </StyledCard>
     </Link>

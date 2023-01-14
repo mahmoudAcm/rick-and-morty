@@ -27,6 +27,7 @@ export const StyledCard = styled(Box)(({ theme }) => ({
     backgroundPosition: "center",
     backgroundImage:
       "url('https://rickandmortyapi.com/api/character/avatar/1.jpeg')",
+    backgroundColor: "#ccc",
   },
   "& .card-content": {
     display: "flex",
@@ -35,6 +36,10 @@ export const StyledCard = styled(Box)(({ theme }) => ({
     "& h6": {
       lineHeight: "30px",
       letterSpacing: "0.15px",
+      width: "100%",
+      overflow: "hidden",
+      whiteSpace: "nowrap",
+      textOverflow: "ellipsis",
     },
     "& .MuiTypography-body2": {
       lineHeight: "21px",
@@ -111,6 +116,7 @@ export const Item = styled(Box)(() => ({
   alignItems: "center",
   borderBottom: "1px solid #ccc",
   padding: "10px 16px",
+  cursor: "pointer",
   "& .col": {
     display: "flex",
     flexDirection: "column",
