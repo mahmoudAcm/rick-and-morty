@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-//@ts-ignore
 import LoadingIcon from "@icons/Loading";
 
 export default function Loader() {
