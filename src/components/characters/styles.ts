@@ -51,26 +51,39 @@ export const StyledCard = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledAvatar = styled(Avatar)(() => ({
+export const StyledAvatar = styled(Avatar)(({ theme }) => ({
   width: 300,
   height: 300,
   border: "5px solid #F2F2F7",
+  [theme.breakpoints.down("md")]: {
+    width: 146,
+    height: 148,
+  },
 }));
 
-export const Name = styled(Typography)(() => ({
+export const Name = styled(Typography)(({ theme }) => ({
   fontSize: 48,
   lineHeight: "56.25px",
   color: "#081F32",
   marginTop: 16,
+  [theme.breakpoints.down("md")]: {
+    fontSize: 32,
+    lineHeight: "37.5px",
+  },
 }));
 
-export const StyledDetails = styled(Box)(() => ({
+export const StyledDetails = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: 20,
   marginTop: 42,
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    gap: 52,
+  },
 }));
 
-export const List = styled(Box)(() => ({
+export const List = styled(Box)(({ theme }) => ({
+  width: 413,
   display: "flex",
   flexDirection: "column",
   "& .list-name": {
@@ -79,12 +92,20 @@ export const List = styled(Box)(() => ({
     lineHeight: "24px",
     letterSpacing: "0.15px",
     color: "#8E8E93",
+    marginLeft: -16,
     marginBottom: 36,
+  },
+  [theme.breakpoints.down("md")]: {
+    width: 312,
+    "& .list-name": {
+      marginLeft: 0,
+      marginBottom: 16,
+    },
   },
 }));
 
 export const Item = styled(Box)(() => ({
-  width: 413,
+  width: "100%",
   minHeight: 64,
   display: "flex",
   alignItems: "center",
