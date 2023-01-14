@@ -1,9 +1,9 @@
 //components
 import { Section } from "@components/styles";
 import { Typography } from "@mui/material";
-import { StyledAvatar, Name, Details, Item, List } from "./styles";
+import { StyledAvatar, Name, StyledDetails, Item, List } from "./styles";
 
-export default function CharactersDetails() {
+export default function Details() {
   return (
     <Section>
       <div className="container">
@@ -13,7 +13,7 @@ export default function CharactersDetails() {
         />
         <Name>Rick Sanchez</Name>
 
-        <Details>
+        <StyledDetails>
           <List>
             <span className="list-name">Informations</span>
             <Item>
@@ -53,7 +53,7 @@ export default function CharactersDetails() {
               </Item>
             ))}
           </List>
-        </Details>
+        </StyledDetails>
       </div>
     </Section>
   );
