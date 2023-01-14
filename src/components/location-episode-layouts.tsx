@@ -1,6 +1,9 @@
 //types
 import { ReactNode } from "react";
 
+//utils
+import { useTheme } from "@mui/material/styles";
+
 //components
 import { Section, StyledLocationEpisodeHeaders, Grid } from "./styles";
 import Typography from "@mui/material/Typography";
@@ -26,11 +29,11 @@ export interface LocationEpisodeLayoutsProps {
 export default function LocationEpisodeLayouts(
   props: LocationEpisodeLayoutsProps
 ) {
+  const theme = useTheme();
   return (
     <Section
       sx={{
         "& .subtitle": {
-          width: 1030,
           fontSize: 20,
           lineHeight: "24px",
           fontWeight: 500,
@@ -42,7 +45,13 @@ export default function LocationEpisodeLayouts(
     >
       <Section
         component="header"
-        sx={{ minHeight: "fit-content", marginBottom: "64px" }}
+        sx={{
+          minHeight: "fit-content",
+          marginBottom: "64px",
+          [theme.breakpoints.down("sm")]: {
+            marginBottom: "152px",
+          },
+        }}
       >
         <div className="container">
           <StyledLocationEpisodeHeaders>

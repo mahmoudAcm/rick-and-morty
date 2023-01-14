@@ -74,7 +74,7 @@ export const StyledCard = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledLocationEpisodeHeaders = styled(Box)(() => ({
+export const StyledLocationEpisodeHeaders = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: 24,
@@ -83,11 +83,19 @@ export const StyledLocationEpisodeHeaders = styled(Box)(() => ({
     fontSize: 36,
     lineHeight: "42.19px",
     color: "#081F32",
+    [theme.breakpoints.down("sm")]: {
+      width: 312,
+    },
   },
   "& .row": {
     marginLeft: 80,
     display: "flex",
     gap: 224,
+    [theme.breakpoints.down("sm")]: {
+      margin: 0,
+      gap: 0,
+      justifyContent: "space-between"
+    },
   },
   "& .col-key": {
     fontSize: 16,
