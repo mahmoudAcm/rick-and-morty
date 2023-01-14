@@ -1,5 +1,5 @@
 //components
-import { Section } from "@components/styles";
+import { StyledCharacters } from "./styles";
 import Filter from "./filter";
 import Card from "./card";
 import LoadMoreButton from "@components/buttons/loadMore";
@@ -7,7 +7,7 @@ import { Grid } from "@components/styles";
 
 export default function Characters() {
   return (
-    <Section>
+    <StyledCharacters>
       <div className="container">
         <img src="styled-logo.svg" alt="logo" />
         <Filter />
@@ -18,6 +18,6 @@ export default function Characters() {
         </Grid>
         <LoadMoreButton />
       </div>
-    </Section>
+    </StyledCharacters>
   );
 }

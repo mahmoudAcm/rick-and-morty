@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
-export const Section = styled(Box)(() => ({
+export const Section = styled(Box)(({ theme }) => ({
   width: "100%",
   minHeight: "100vh",
   "& .container": {
@@ -10,10 +10,13 @@ export const Section = styled(Box)(() => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "100vw",
+    },
   },
 }));
 
-export const StyledFilter = styled(Box)(() => ({
+export const StyledFilter = styled(Box)(({ theme }) => ({
   display: "flex",
   marginTop: 20,
   gap: 20,
@@ -21,20 +24,31 @@ export const StyledFilter = styled(Box)(() => ({
     borderRadius: 8,
   },
   "& .MuiTextField-root": { m: 1, width: 240 },
+  [theme.breakpoints.down("lg")]: {
+    "& .search": {
+      width: "312px !important",
+    },
+    "& .MuiTextField-root:not(.search)": {
+      display: "none",
+    },
+  },
 }));
 
-export const Grid = styled(Box)(() => ({
+export const Grid = styled(Box)(({ theme }) => ({
   width: "100%",
   display: "grid",
   marginTop: 61,
   columnGap: 20,
   rowGap: 24,
   justifyContent: "center",
-  gridTemplateColumns: "repeat(auto-fit,240px)",
+  gridTemplateColumns: "repeat(auto-fit, 240px)",
   marginBottom: 48,
+  [theme.breakpoints.down("lg")]: {
+    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 312px))",
+  },
 }));
 
-export const StyledCard = styled(Box)(() => ({
+export const StyledCard = styled(Box)(({ theme }) => ({
   width: 240,
   height: 128,
   padding: "38px 16px",
@@ -54,6 +68,9 @@ export const StyledCard = styled(Box)(() => ({
     fontSize: 14,
     lineHeight: "21px",
     letterSpacing: "0.25px",
+  },
+  [theme.breakpoints.down("lg")]: {
+    width: 312,
   },
 }));
 

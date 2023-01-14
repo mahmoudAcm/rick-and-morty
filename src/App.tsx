@@ -14,7 +14,7 @@ export default function App() {
       <Characters />
       <Locations />
       <Episodes />
-      <CharactersDetails />
+      {/* <CharactersDetails />
       <LocationDetails
         origin="Earth (Replacement Dimension)"
         type="Planet"
@@ -24,7 +24,7 @@ export default function App() {
         episode_name="Pilot"
         code="SE01E01"
         date="December 2, 2013"
-      />
+      /> */}
     </>
   );
 }

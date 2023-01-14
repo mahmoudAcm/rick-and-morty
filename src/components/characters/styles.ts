@@ -1,9 +1,18 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
+import { Section } from "@components/styles";
 import { styled } from "@mui/material/styles";
 
-export const StyledCard = styled(Box)(() => ({
+export const StyledCharacters = styled(Section)(({ theme }) => ({
+  [theme.breakpoints.down("lg")]: {
+    "& img": {
+      width: 312,
+    },
+  },
+}));
+
+export const StyledCard = styled(Box)(({ theme }) => ({
   width: 240,
   height: 244,
   backgroundColor: "white",
@@ -31,6 +40,13 @@ export const StyledCard = styled(Box)(() => ({
       lineHeight: "21px",
       letterSpacing: "0.25px",
       color: "rgba(0, 0, 0, 0.6)",
+    },
+  },
+  [theme.breakpoints.down("lg")]: {
+    width: 312,
+    height: 308,
+    "& .card-image": {
+      height: 232,
     },
   },
 }));

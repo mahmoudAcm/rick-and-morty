@@ -9,10 +9,11 @@ export default function Episodes() {
     <Section>
       <div className="container">
         <img src="./episodes.svg" alt="logo" />
-        <StyledFilter>
+        <StyledFilter sx={{ marginTop: "16px" }}>
           <TextField
             label="Filter by name or episode (ex. S01 or S01E02)"
             sx={{ width: "500px !important" }}
+            className="search"
           />
         </StyledFilter>
         <Grid>

@@ -6,9 +6,13 @@ export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingRight: "210px !important",
   minHeight: "60px !important",
   justifyContent: "space-between",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("lg")]: {
     paddingLeft: "24px !important",
     paddingRight: "24px !important",
+  },
+  [theme.breakpoints.down(321)]: {
+    paddingLeft: "10px !important",
+    paddingRight: "10px !important",
   },
 }));
 
