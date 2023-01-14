@@ -56,3 +56,33 @@ export const StyledCard = styled(Box)(() => ({
     letterSpacing: "0.25px",
   },
 }));
+
+export const StyledLocationEpisodeHeaders = styled(Box)(() => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: 24,
+  "& .title": {
+    width: 674,
+    fontSize: 36,
+    lineHeight: "42.19px",
+    color: "#081F32",
+  },
+  "& .row": {
+    marginLeft: 80,
+    display: "flex",
+    gap: 224,
+  },
+  "& .col-key": {
+    fontSize: 16,
+    fontWeight: 700,
+    lineHeight: "24px",
+    letterSpacing: "0.15px",
+    color: "#081F32",
+  },
+  "& .col-value": {
+    fontSize: 14,
+    lineHeight: "20px",
+    letterSpacing: "0.25px",
+    color: "#6E798C",
+  },
+}));
