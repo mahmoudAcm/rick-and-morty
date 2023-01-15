@@ -81,11 +81,36 @@ export default function Details() {
             ) : (
               <></>
             )}
+            {data.character.location.name ? (
+              <Link
+                to={
+                  import.meta.env.BASE_URL +
+                  "locations/" +
+                  data.character.location.id
+                }
+                key={data.character.location.id}
+              >
+                <Item className="cursor">
+                  <div className="col">
+                    <Typography className="key">Location</Typography>
+                    <Typography className="value">
+                      {data.character.location.name}
+                    </Typography>
+                  </div>
+                  <RightArrowIcon />
+                </Item>
+              </Link>
+            ) : (
+              <></>
+            )}
           </List>
           <List>
             <span className="list-name">Episodes</span>
             {(data.character.episode ?? []).map((episode: Episode) => (
-              <Link to={import.meta.env.BASE_URL + "episodes/" + episode.id} key={episode.id}>
+              <Link
+                to={import.meta.env.BASE_URL + "episodes/" + episode.id}
+                key={episode.id}
+              >
                 <Item className="cursor">
                   <div className="col">
                     <Typography className="code">{episode.episode}</Typography>

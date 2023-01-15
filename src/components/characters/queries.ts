@@ -38,6 +38,10 @@ export const createCharacterQuery = (id: string) =>
             origin {
               name
             }
+            location {
+              id
+              name
+            }
             episode {
               id
               name
