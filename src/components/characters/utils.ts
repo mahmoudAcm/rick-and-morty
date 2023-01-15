@@ -16,5 +16,5 @@ export const useCharacterDetails = (id?: string) => {
       updateQuery: updateQuery("none"),
     });
   }, [id]);
-  return { data, loading };
+  return { data, loading: !id ?? loading };
 };
