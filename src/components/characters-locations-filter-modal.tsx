@@ -13,11 +13,10 @@ import { StyledMobileFilter } from "./styles";
 import CloseIcon from "@icons/Close";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("lg")]: {
     display: "none",
   },
   "& .MuiDialogContent-root": {
-    width: 312,
     padding: theme.spacing(1, 2),
   },
 }));
@@ -65,6 +64,8 @@ export default function CustomizedDialogs({
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
+        fullWidth
+        maxWidth="md"
       >
         <Box sx={{ m: 0, p: 2, display: "flex", alignItems: "center" }}>
           <Typography sx={{ flex: 1 }}>Filters</Typography>
