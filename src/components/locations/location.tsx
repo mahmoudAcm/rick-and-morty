@@ -10,7 +10,7 @@ interface LocationProps extends LocationType {}
 
 export default function Location(props: LocationProps) {
   return (
-    <Link to={import.meta.env.BASE_URL + "locations/" + props.id}>
+    <Link to={"/locations/" + props.id}>
       <StyledCard>
         <Typography variant="h6" align="center">
           {props.name ?? "Earth (C-137)"}

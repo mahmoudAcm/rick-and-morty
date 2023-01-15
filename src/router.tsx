@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createHashRouter, Outlet } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 //components
@@ -11,7 +11,7 @@ const CharactersDetails = lazy(() => import("@components/characters/details"));
 const LocationDetails = lazy(() => import("@components/locations/details"));
 const EpisodeDetails = lazy(() => import("@components/episodes/details"));
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "*",
     element: (

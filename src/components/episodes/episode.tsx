@@ -10,7 +10,7 @@ interface EpisodeProps extends EpisodeType {}
 
 export default function Episode(props: EpisodeProps) {
   return (
-    <Link to={import.meta.env.BASE_URL + "episodes/" + props.id}>
+    <Link to={"/episodes/" + props.id}>
       <StyledCard>
         <Typography variant="h6" align="center">
           {props.name}

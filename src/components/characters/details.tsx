@@ -83,11 +83,7 @@ export default function Details() {
             )}
             {data.character.location.name ? (
               <Link
-                to={
-                  import.meta.env.BASE_URL +
-                  "locations/" +
-                  data.character.location.id
-                }
+                to={"/locations/" + data.character.location.id}
                 key={data.character.location.id}
               >
                 <Item className="cursor">
@@ -108,7 +104,7 @@ export default function Details() {
             <span className="list-name">Episodes</span>
             {(data.character.episode ?? []).map((episode: Episode) => (
               <Link
-                to={import.meta.env.BASE_URL + "episodes/" + episode.id}
+                to={"/episodes/" + episode.id}
                 key={episode.id}
               >
                 <Item className="cursor">

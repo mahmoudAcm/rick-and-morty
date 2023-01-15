@@ -10,7 +10,7 @@ export interface CharacterProps extends CharacterType {}
 
 export default function Character(props: CharacterProps) {
   return (
-    <Link to={import.meta.env.BASE_URL + "characters/" + props.id}>
+    <Link to={"/characters/" + props.id}>
       <StyledCard>
         <div
           className="card-image"
