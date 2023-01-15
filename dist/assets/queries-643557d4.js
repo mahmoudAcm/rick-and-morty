@@ -1,4 +1,4 @@
-import{$ as a}from"./index-7d7ee9ac.js";import{g as r}from"./styles-e2a1f7d7.js";const t=(e,s)=>r`
+import{$ as a}from"./index-7f96bb1f.js";import{g as r}from"./styles-b8804c7a.js";const t=(e,s)=>r`
   query {
     episodes(filter: ${a(s,",")}, page: ${e}) {
       info {

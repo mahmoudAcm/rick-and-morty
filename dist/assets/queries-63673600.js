@@ -1,4 +1,4 @@
-import{$ as t}from"./index-7d7ee9ac.js";import{g as i}from"./styles-e2a1f7d7.js";const r=(e,o)=>i`
+import{$ as t}from"./index-7f96bb1f.js";import{g as i}from"./styles-b8804c7a.js";const r=(e,o)=>i`
   query {
     locations(filter: ${t(o)}, page: ${e}) {
       info {
