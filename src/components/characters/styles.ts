@@ -20,6 +20,10 @@ export const StyledCard = styled(Box)(({ theme }) => ({
   overflow: "hidden",
   boxShadow:
     "0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.14)",
+  transition: "0.3s transform",
+  "&:hover": {
+    transform: "scale(1.05)",
+  },
   "& .card-image": {
     width: "100%",
     height: 168,
@@ -125,7 +129,7 @@ export const Item = styled(Box)(() => ({
     transition: "0.3s background-color",
     "&:hover": {
       backgroundColor: "#cccccc45",
-    }
+    },
   },
   "& .col": {
     display: "flex",

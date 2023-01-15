@@ -112,6 +112,10 @@ export const StyledCard = styled(Box)(({ theme }) => ({
     lineHeight: "21px",
     letterSpacing: "0.25px",
   },
+  transition: "0.3s transform",
+  "&:hover": {
+    transform: "scale(1.05)"
+  },
   [theme.breakpoints.down("lg")]: {
     width: 312,
   },
