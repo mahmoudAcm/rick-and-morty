@@ -32,10 +32,6 @@ export default function Locations() {
       });
     }
   }, []);
- 
-  if (data) { 
-    console.log(Array.from(new Set(data.locations.results.map(({ dimension }) => dimension))));
-  }
 
   const loadMore = () => {
     if (!data) return;
