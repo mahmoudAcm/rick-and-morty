@@ -24,15 +24,6 @@ export default function Locations() {
   const { data, loading, error, fetchMore } = useQuery(LOCATIONS_QUERY);
   const [filter, setFilter] = useState<FilterState>({});
 
-  useEffect(() => {
-    for (let i = 2; i <= 7; i++) {
-      fetchMore({
-        query: createLocationsQuery(i + "", filter),
-        updateQuery: updateQuery("locations"),
-      });
-    }
-  }, []);
-
   const loadMore = () => {
     if (!data) return;
     fetchMore({
