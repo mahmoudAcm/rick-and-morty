@@ -75,6 +75,10 @@ export const Name = styled(Typography)(({ theme }) => ({
     fontSize: 32,
     lineHeight: "37.5px",
   },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 22,
+    lineHeight: "27.5px",
+  },
 }));
 
 export const StyledDetails = styled(Box)(({ theme }) => ({
@@ -118,6 +122,10 @@ export const Item = styled(Box)(() => ({
   padding: "10px 16px",
   "&.cursor": {
     cursor: "pointer",
+    transition: "0.3s background-color",
+    "&:hover": {
+      backgroundColor: "#cccccc45",
+    }
   },
   "& .col": {
     display: "flex",
