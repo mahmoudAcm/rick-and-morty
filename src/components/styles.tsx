@@ -77,6 +77,7 @@ export const Grid = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   gridTemplateColumns: "repeat(auto-fit, 240px)",
   marginBottom: 48,
+  position: "relative",
   [theme.breakpoints.down("lg")]: {
     gridTemplateColumns: "repeat(auto-fit, minmax(300px, 312px))",
   },

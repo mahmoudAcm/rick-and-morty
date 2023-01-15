@@ -7,6 +7,7 @@ import Filter from "./filter";
 import { Grid } from "@components/styles";
 import Card from "./location";
 import LoadMoreButton from "../buttons/loadMore";
+import ListLoader from "@components/list-loader";
 
 //utils
 import { updateQuery } from "../../client";
@@ -45,19 +46,14 @@ export default function Locations() {
             setFilter(filter);
           }}
         />
-        {!loading || data ? (
-          <>
-            <Grid>
-              {data.locations.results.map((location: Location) => (
-                <Card {...location} key={location.id} />
-              ))}
-            </Grid>
-            {data.locations.info.next ? (
-              <LoadMoreButton onClick={loadMore} loading={loading} />
-            ) : (
-              <></>
-            )}
-          </>
+        <Grid>
+          <ListLoader loading={loading} data={data?.locations?.results ?? []} />
+          {(data?.locations?.results ?? []).map((location: Location) => (
+            <Card {...location} key={location.id} />
+          ))}
+        </Grid>
+        {data?.locations?.info?.next ? (
+          <LoadMoreButton onClick={loadMore} loading={loading} />
         ) : (
           <></>
         )}

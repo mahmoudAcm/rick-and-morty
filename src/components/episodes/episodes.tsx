@@ -6,6 +6,7 @@ import { Section, StyledFilter, Grid } from "@components/styles";
 import TextField from "@mui/material/TextField";
 import Card from "./episode";
 import LoadMoreButton from "../buttons/loadMore";
+import ListLoader from "@components/list-loader";
 
 //utils
 import { updateQuery } from "../../client";
@@ -70,19 +71,14 @@ export default function Episodes() {
             }}
           />
         </StyledFilter>
-        {!loading || data ? (
-          <>
-            <Grid>
-              {(data.episodes.results ?? []).map((episode: Episode) => (
-                <Card key={episode.id} {...episode} />
-              ))}
-            </Grid>
-            {data.episodes.info.next ? (
-              <LoadMoreButton onClick={loadMore} loading={loading} />
-            ) : (
-              <></>
-            )}
-          </>
+        <Grid>
+          <ListLoader loading={loading} data={data?.episodes?.results ?? []} />
+          {(data?.episodes?.results ?? []).map((episode: Episode) => (
+            <Card key={episode.id} {...episode} />
+          ))}
+        </Grid>
+        {data?.episodes?.info?.next ? (
+          <LoadMoreButton onClick={loadMore} loading={loading} />
         ) : (
           <></>
         )}

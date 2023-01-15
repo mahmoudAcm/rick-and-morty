@@ -7,6 +7,7 @@ import Filter from "./filter";
 import Card from "./character";
 import LoadMoreButton from "@components/buttons/loadMore";
 import { Grid } from "@components/styles";
+import ListLoader from "@components/list-loader";
 
 //types
 import { Character } from "@__types__";
@@ -46,19 +47,17 @@ export default function Characters() {
             setFilter(filter);
           }}
         />
-        {!loading || data ? (
-          <>
-            <Grid>
-              {data.characters.results.map((character: Character) => (
-                <Card {...character} key={character.id} />
-              ))}
-            </Grid>
-            {data.characters.info.next ? (
-              <LoadMoreButton onClick={loadMore} loading={loading} />
-            ) : (
-              <></>
-            )}
-          </>
+        <Grid>
+          <ListLoader
+            loading={loading}
+            data={data?.characters?.results ?? []}
+          />
+          {(data?.characters?.results ?? []).map((character: Character) => (
+            <Card {...character} key={character.id} />
+          ))}
+        </Grid>
+        {data?.characters?.info?.next ? (
+          <LoadMoreButton onClick={loadMore} loading={loading} />
         ) : (
           <></>
         )}
