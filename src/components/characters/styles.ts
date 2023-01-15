@@ -116,7 +116,9 @@ export const Item = styled(Box)(() => ({
   alignItems: "center",
   borderBottom: "1px solid #ccc",
   padding: "10px 16px",
-  cursor: "pointer",
+  "&.cursor": {
+    cursor: "pointer",
+  },
   "& .col": {
     display: "flex",
     flexDirection: "column",

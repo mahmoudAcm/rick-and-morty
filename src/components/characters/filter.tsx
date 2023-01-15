@@ -1,9 +1,10 @@
 import { Dispatch, useEffect, useRef, useState } from "react";
 
 //components
-import { StyledFilter, StyledMobileFilter } from "@components/styles";
+import { StyledFilter } from "@components/styles";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
+import Modal from "@components/characters-locations-filter-modal";
 
 const SPECIES = [
   "None",
@@ -60,14 +61,8 @@ export default function Filter({
     return () => __clearTimeout__();
   }, [filter]);
 
-  return (
-    <StyledFilter component="form" sx={{ marginTop: "32px" }}>
-      <TextField
-        label="Filter by name..."
-        className="search"
-        value={filter.name}
-        onChange={handleChange("name")}
-      />
+  const inputs = (
+    <>
       <TextField
         select
         label="Species"
@@ -104,7 +99,19 @@ export default function Filter({
           </MenuItem>
         ))}
       </TextField>
-      <StyledMobileFilter />
+    </>
+  );
+
+  return (
+    <StyledFilter component="form" sx={{ marginTop: "32px" }}>
+      <TextField
+        label="Filter by name..."
+        className="search"
+        value={filter.name}
+        onChange={handleChange("name")}
+      />
+      {inputs}
+      <Modal>{inputs}</Modal>
     </StyledFilter>
   );
 }

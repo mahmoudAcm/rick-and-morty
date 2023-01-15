@@ -86,7 +86,7 @@ export default function Details() {
             <span className="list-name">Episodes</span>
             {(data.character.episode ?? []).map((episode: Episode) => (
               <Link to={import.meta.env.BASE_URL + "episodes/" + episode.id} key={episode.id}>
-                <Item>
+                <Item className="cursor">
                   <div className="col">
                     <Typography className="code">{episode.episode}</Typography>
                     <Typography className="episode-name">

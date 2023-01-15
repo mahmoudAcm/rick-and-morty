@@ -61,6 +61,8 @@ export const StyledMobileFilter = styled(function (props: BoxProps) {
   boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24)",
   borderRadius: 4,
   padding: 21,
+  userSelect: "none",
+  cursor: "pointer",
   [theme.breakpoints.down("lg")]: {
     display: "flex",
   },
