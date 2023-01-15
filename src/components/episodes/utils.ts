@@ -1,20 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { createEpisodeQuery } from "./queries";
 
 //utils
 import { updateQuery } from "../../client";
 
-const EPISODE_QUERY = createEpisodeQuery("0");
-
 export const useEpisodeDetails = (id?: string) => {
-  const { data, loading, fetchMore } = useQuery(EPISODE_QUERY);
+  const { data, fetchMore } = useQuery(createEpisodeQuery(id ?? "0"));
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (!id) return;
+    setLoading(true);
     fetchMore({
       query: createEpisodeQuery(id),
       updateQuery: updateQuery("none"),
+    }).then(() => {
+      setLoading(false);
     });
   }, [id]);
-  return { data, loading: !id ?? loading };
+
+  return { data, loading };
 };
