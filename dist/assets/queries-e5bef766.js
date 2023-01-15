@@ -1,4 +1,4 @@
-import{$ as t}from"./index-8cc532e3.js";import{g as a}from"./styles-c78f386b.js";const c=(e,r)=>a`
+import{$ as t}from"./index-7d7ee9ac.js";import{g as a}from"./styles-e2a1f7d7.js";const c=(e,r)=>a`
     query {
         characters(filter: ${t(r??{})}, page: ${e}) {
             info {
