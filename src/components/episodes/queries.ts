@@ -1,8 +1,14 @@
 import { gql } from "@apollo/client";
 
-export const createEpisodesQuery = (page: string) => gql`
+//utils
+import { transformFilter } from "@__client__";
+
+export const createEpisodesQuery = (
+  page: string,
+  filter: { episode?: string; name?: string }
+) => gql`
   query {
-    episodes(page: ${page}) {
+    episodes(filter: ${transformFilter(filter, ",")}, page: ${page}) {
       info {
         next
       }

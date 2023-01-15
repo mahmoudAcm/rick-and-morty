@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 
 //components
@@ -9,22 +10,25 @@ import { Grid } from "@components/styles";
 
 //types
 import { Character } from "@__types__";
+import { FilterState } from "./filter";
 
 //queries
 import { createCharactersQuery } from "./queries";
 
 //utils
 import { updateQuery } from "../../client";
+import { useState } from "react";
 
-const CHARACTERS_QUERY = createCharactersQuery("1");
+const CHARACTERS_QUERY = createCharactersQuery("1", {});
 
 export default function Characters() {
   const { data, loading, error, fetchMore } = useQuery(CHARACTERS_QUERY);
+  const [filter, setFilter] = useState<FilterState>({});
 
   const loadMore = () => {
     if (!data) return;
     fetchMore({
-      query: createCharactersQuery(data.characters.info.next),
+      query: createCharactersQuery(data.characters.info.next, filter),
       updateQuery: updateQuery("characters"),
     });
   };
@@ -33,7 +37,15 @@ export default function Characters() {
     <StyledCharacters>
       <div className="container">
         <img src={import.meta.env.BASE_URL + "styled-logo.svg"} alt="logo" />
-        {/* <Filter /> */}
+        <Filter
+          onFilter={(filter) => {
+            fetchMore({
+              query: createCharactersQuery("1", filter),
+              updateQuery: updateQuery("none"),
+            });
+            setFilter(filter);
+          }}
+        />
         {!loading || data ? (
           <>
             <Grid>

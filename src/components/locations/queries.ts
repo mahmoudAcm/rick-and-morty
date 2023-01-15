@@ -1,8 +1,14 @@
 import { gql } from "@apollo/client";
 
-export const createLocationsQuery = (page: string) => gql`
+//utils
+import { transformFilter } from "@__client__";
+
+//types
+import { FilterState } from "./filter";
+
+export const createLocationsQuery = (page: string, filter: FilterState) => gql`
   query {
-    locations(page: ${page}) {
+    locations(filter: ${transformFilter(filter)}, page: ${page}) {
       info {
         next
       }

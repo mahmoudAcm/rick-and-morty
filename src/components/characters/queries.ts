@@ -1,8 +1,17 @@
 import { gql } from "@apollo/client";
 
-export const createCharactersQuery = (page: string) => gql`
+//types
+import { FilterState } from "./filter";
+
+//utils
+import { transformFilter } from "../../client";
+
+export const createCharactersQuery = (
+  page: string,
+  filter?: FilterState
+) => gql`
     query {
-        characters(page: ${page}) {
+        characters(filter: ${transformFilter(filter??{})}, page: ${page}) {
             info {
               next
             }
@@ -37,4 +46,20 @@ export const createCharacterQuery = (id: string) =>
             }
           }
     }
+`;
+
+export const createSpeciesAndStatusAndGenderQuery = (page: string) => gql`
+query {
+    characters(page: ${page}) {
+        info {
+          pages
+          next
+        }
+        results {
+          gender
+          status
+          species
+        }
+    }
+}
 `;

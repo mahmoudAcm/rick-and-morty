@@ -99,6 +99,10 @@ export const StyledCard = styled(Box)(({ theme }) => ({
   "& .MuiTypography-body2": {
     lineHeight: "21px",
     letterSpacing: "0.25px",
+    width: "100%",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
   },
   "& .ep-code": {
     fontSize: 14,

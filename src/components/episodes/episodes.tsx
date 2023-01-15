@@ -1,3 +1,4 @@
+import { useCallback, useRef, useState } from "react";
 import { useQuery } from "@apollo/client";
 
 //components
@@ -15,18 +16,37 @@ import { Episode } from "@__types__";
 //queries
 import { createEpisodesQuery } from "./queries";
 
-const EPISODES_QUERY = createEpisodesQuery("1");
+const EPISODES_QUERY = createEpisodesQuery("1", {});
 
 export default function Episodes() {
   const { data, loading, error, fetchMore } = useQuery(EPISODES_QUERY);
+  const [filter, setFilter] = useState("");
+  const timeoutRef = useRef<any>();
 
   const loadMore = () => {
     if (!data) return;
     fetchMore({
-      query: createEpisodesQuery(data.episodes.info.next),
+      query: createEpisodesQuery(
+        data.episodes.info.next,
+        getFilterObject(filter)
+      ),
       updateQuery: updateQuery("episodes"),
     });
   };
+
+  const __clearTimeout = () => {
+    if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
+  };
+
+  const getFilterObject = useCallback((filter: string) => {
+    const obj: Record<string, string> = {};
+    if (filter.match(/[S\d+E\d]/g)) {
+      obj["episode"] = filter;
+    } else {
+      obj["name"] = filter;
+    }
+    return obj;
+  }, []);
 
   return (
     <Section>
@@ -37,6 +57,17 @@ export default function Episodes() {
             label="Filter by name or episode (ex. S01 or S01E02)"
             sx={{ width: "500px !important" }}
             className="search"
+            onChange={(evt) => {
+              const filter = evt.target.value;
+              __clearTimeout();
+              timeoutRef.current = setTimeout(() => {
+                fetchMore({
+                  query: createEpisodesQuery("1", getFilterObject(filter)),
+                  updateQuery: updateQuery("none"),
+                });
+              }, 300);
+              setFilter(filter);
+            }}
           />
         </StyledFilter>
         {!loading || data ? (

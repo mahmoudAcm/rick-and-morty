@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 
 //components
@@ -12,19 +13,34 @@ import { updateQuery } from "../../client";
 
 //types
 import { Location } from "@__types__";
+import { FilterState } from "./filter";
 
 //queries
 import { createLocationsQuery } from "./queries";
 
-const LOCATIONS_QUERY = createLocationsQuery("1");
+const LOCATIONS_QUERY = createLocationsQuery("1", {});
 
 export default function Locations() {
   const { data, loading, error, fetchMore } = useQuery(LOCATIONS_QUERY);
+  const [filter, setFilter] = useState<FilterState>({});
+
+  useEffect(() => {
+    for (let i = 2; i <= 7; i++) {
+      fetchMore({
+        query: createLocationsQuery(i + "", filter),
+        updateQuery: updateQuery("locations"),
+      });
+    }
+  }, []);
+ 
+  if (data) { 
+    console.log(Array.from(new Set(data.locations.results.map(({ dimension }) => dimension))));
+  }
 
   const loadMore = () => {
     if (!data) return;
     fetchMore({
-      query: createLocationsQuery(data.locations.info.next),
+      query: createLocationsQuery(data.locations.info.next, filter),
       updateQuery: updateQuery("locations"),
     });
   };
@@ -33,7 +49,15 @@ export default function Locations() {
     <Section>
       <div className="container">
         <img src={import.meta.env.BASE_URL + "locations.svg"} alt="logo" />
-        {/* <Filter /> */}
+        <Filter
+          onFilter={(filter) => {
+            fetchMore({
+              query: createLocationsQuery("1", filter),
+              updateQuery: updateQuery("none"),
+            });
+            setFilter(filter);
+          }}
+        />
         {!loading || data ? (
           <>
             <Grid>
@@ -41,7 +65,11 @@ export default function Locations() {
                 <Card {...location} key={location.id} />
               ))}
             </Grid>
-            <LoadMoreButton onClick={loadMore} loading={loading} />
+            {data.locations.info.next ? (
+              <LoadMoreButton onClick={loadMore} loading={loading} />
+            ) : (
+              <></>
+            )}
           </>
         ) : (
           <></>

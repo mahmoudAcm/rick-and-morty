@@ -19,7 +19,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@icons/*": ["icons/*"],
-      "@__types__": ["types.ts"]
+      "@__types__": ["types.ts"],
+      "@__client__": ["client.ts"]
     }
   },
   "include": ["src"],
