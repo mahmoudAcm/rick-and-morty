@@ -4,6 +4,7 @@ import { Suspense, lazy } from "react";
 //components
 import Header from "@components/header";
 import Loader from "@components/loader";
+import { Typography } from "@mui/material";
 const Characters = lazy(() => import("@components/characters"));
 const Locations = lazy(() => import("@components/locations"));
 const Episodes = lazy(() => import("@components/episodes"));
@@ -13,7 +14,7 @@ const EpisodeDetails = lazy(() => import("@components/episodes/details"));
 
 const router = createHashRouter([
   {
-    path: "*",
+    path: "/",
     element: (
       <>
         <Header />
@@ -48,6 +49,19 @@ const router = createHashRouter([
         element: <EpisodeDetails />,
       },
     ],
+    errorElement: (
+      <>
+        <Header />
+        <Typography
+          fontWeight={500}
+          align="center"
+          color="gray"
+          sx={{ marginTop: 10, userSelect: "none" }}
+        >
+          Page Not Found!
+        </Typography>
+      </>
+    ),
   },
 ]);
 
