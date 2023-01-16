@@ -1,25 +1,24 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 /**
- * @description it is just made for one level
- * ```
- * { name: "mahmoud" }
- * ```
- * not
- * ```
- * { name: { firstname: "mahmoud" } }
+ * it shallow transforms a simple javascript object to graphql string
+ * @param filter javascript object
+ * @example
+ * given { name: "a", count: 0 }
+ * ```js
+ * result = `{
+ *   name: "a"
+ *   count: 0
+ * }`
  * ```
  */
-export function transformFilter(
-  filter: Record<string, any>,
-  delemiter?: string
-) {
+export function transformJsToGql(filter: Record<string, any>) {
   const keys = Object.keys(filter);
   var output = [];
   for (var key of keys) {
     output.push(`${key}:"${filter[key]}"`);
   }
-  return "{ " + output.join(" " + (delemiter ?? " ") + " ") + " }";
+  return "{ " + output.join(" ") + " }";
 }
 
 export function updateQuery(

@@ -4,14 +4,11 @@ import { gql } from "@apollo/client";
 import { FilterState } from "./filter";
 
 //utils
-import { transformFilter } from "../../client";
+import { transformJsToGql } from "../../client";
 
-export const createCharactersQuery = (
-  page: string,
-  filter?: FilterState
-) => gql`
+export const createCharactersQuery = (page: string, filter: FilterState) => gql`
     query {
-        characters(filter: ${transformFilter(filter??{})}, page: ${page}) {
+        characters(filter: ${transformJsToGql(filter)}, page: ${page}) {
             info {
               next
             }
