@@ -1,10 +1,13 @@
-import { Dispatch, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 //components
 import { StyledFilter } from "@components/styles";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Modal from "@components/characters-locations-filter-modal";
+
+//utils
+import { useTheme, useMediaQuery } from "@mui/material";
 
 const SPECIES = [
   "None",
@@ -34,6 +37,8 @@ export default function Filter({
 }: {
   onFilter: (filter: FilterState) => void;
 }) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(() => theme.breakpoints.down("lg"));
   const timeoutRef = useRef<any>();
   const [filter, setFilter] = useState({
     species: "",
@@ -43,10 +48,27 @@ export default function Filter({
   });
 
   const handleChange = (name: string) => (evt: any) => {
+    const value = evt.target.value;
+    if (isMobile && name === "name") {
+      onFilterChange({ ...filter, name: value });
+      setFilter((prev) => ({
+        ...prev,
+        name: value,
+      }));
+      return;
+    }
+
     setFilter((prev) => ({
       ...prev,
-      [name]: evt.target.value == "None" ? "" : evt.target.value,
+      [name]: value == "None" ? "" : value,
     }));
+  };
+
+  const onFilterChange = (filter: FilterState) => {
+    __clearTimeout__();
+    timeoutRef.current = setTimeout(() => {
+      onFilter(filter);
+    }, 300);
   };
 
   const __clearTimeout__ = () => {
@@ -54,12 +76,11 @@ export default function Filter({
   };
 
   useEffect(() => {
-    __clearTimeout__();
-    timeoutRef.current = setTimeout(() => {
-      onFilter(filter);
-    }, 300);
-    return () => __clearTimeout__();
-  }, [filter]);
+    if (!isMobile) {
+      onFilterChange(filter);
+      return () => __clearTimeout__();
+    }
+  }, [filter, isMobile]);
 
   const inputs = (
     <>
@@ -111,7 +132,13 @@ export default function Filter({
         onChange={handleChange("name")}
       />
       {inputs}
-      <Modal>{inputs}</Modal>
+      <Modal
+        onApply={() => {
+          onFilterChange(filter);
+        }}
+      >
+        {inputs}
+      </Modal>
     </StyledFilter>
   );
 }
