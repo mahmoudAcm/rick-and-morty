@@ -37,16 +37,12 @@ const ApplyButton = styled(Box)(() => ({
   textAlign: "center",
 }));
 
-export interface DialogTitleProps {
-  id: string;
-  children?: React.ReactNode;
-  onClose: () => void;
-}
-
 export default function CustomizedDialogs({
   children,
+  onApply,
 }: {
   children: JSX.Element;
+  onApply: () => void;
 }) {
   const [open, setOpen] = React.useState(false);
 
@@ -78,7 +74,14 @@ export default function CustomizedDialogs({
         >
           {children}
         </DialogContent>
-        <ApplyButton onClick={handleClose}>Apply</ApplyButton>
+        <ApplyButton
+          onClick={() => {
+            onApply();
+            handleClose();
+          }}
+        >
+          Apply
+        </ApplyButton>
       </BootstrapDialog>
     </div>
   );
