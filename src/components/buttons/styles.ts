@@ -13,6 +13,7 @@ export const StyledLoadMoreButton = styled("button")(() => ({
   display: "flex",
   gap: 10,
   transition: "0.3s box-shadow",
+  userSelect: "none",
   "&:active": {
     boxShadow: "none",
   },
